@@ -11,14 +11,14 @@ def escolher_lado():
         return 'O'
     else:
         return 'X'
-    
+
 def mostrar_tab():
     
-    print(f' {a} | {b} | {c} ')
-    print('-----------')
-    print(f' {d} | {e} | {f} ')
-    print('-----------')
-    print(f' {g} | {h} | {i} \n')
+    print(f' {a} | {b} | {c}      (a) | (b) | (c) ')
+    print('-----------    -----------------')
+    print(f' {d} | {e} | {f}      (d) | (e) | (f) ')
+    print('-----------    -----------------')
+    print(f' {g} | {h} | {i}      (g) | (h) | (i) \n')
     
 def jogada(njogador):
     indxJogada = ''
@@ -30,7 +30,7 @@ def jogada(njogador):
         indxJogada = input(f"Jogador número {njogador}, escolha onde deseja jogar: \n")
         
         if indxJogada.isdigit() == False:
-            digitito = True
+            digito = True
             print("Ops, esse não é um dígito\n")
             continue
         else:
@@ -64,6 +64,7 @@ def atualizar_tab(indxJogada, jogador):
     global g
     global i
     
+    
     if indxJogada == 1:
         a = jogador
     elif indxJogada == 2:
@@ -84,6 +85,9 @@ def atualizar_tab(indxJogada, jogador):
         i = jogador
         
 def ingame():
+    
+    lst = [a,b,c,d,e,f,g,h,i]
+    
     if a == b and a == c and a in ['X','O']:
         return True
     elif a == d and a == g and a in ['X','O']:
@@ -101,7 +105,9 @@ def ingame():
     elif c == f and c == i and c in ['X','O']:
         return True
     elif g == h and g == i and g in ['X','O']:
-        return True
+        return True     
+    elif lst.count(' ') == 0:
+        return  True
     else:
         return False
     
@@ -126,20 +132,6 @@ while replay == 'S':
     
     indxOcupados = []
     
-    jogador = escolher_lado()
-    
-    a = '(1)'
-    b = '(2)'
-    c = '(3)'
-    d = '(4)'
-    e = '(5)'
-    f = '(6)'
-    g = '(7)'
-    h = '(8)'
-    i = '(9)'    
-    
-    mostrar_tab()
-    
     a = ' '
     b = ' '
     c = ' '
@@ -149,6 +141,10 @@ while replay == 'S':
     g = ' '
     h = ' '
     i = ' '
+    
+    jogador = escolher_lado()  
+    
+    mostrar_tab()
     
     njogador = '2'
     
