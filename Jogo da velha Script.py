@@ -14,13 +14,14 @@ def escolher_lado():
 
 def mostrar_tab():
     
-    print(f' {a} | {b} | {c}      (a) | (b) | (c) ')
+    print(f' {a} | {b} | {c}      (1) | (2) | (3) ')
     print('-----------    -----------------')
-    print(f' {d} | {e} | {f}      (d) | (e) | (f) ')
+    print(f' {d} | {e} | {f}      (4) | (5) | (6) ')
     print('-----------    -----------------')
-    print(f' {g} | {h} | {i}      (g) | (h) | (i) \n')
+    print(f' {g} | {h} | {i}      (7) | (8) | (9) \n')
     
 def jogada(njogador):
+    
     indxJogada = ''
     digito = True
     foraRange = True
@@ -88,6 +89,8 @@ def ingame():
     
     lst = [a,b,c,d,e,f,g,h,i]
     
+    global velha
+    
     if a == b and a == c and a in ['X','O']:
         return True
     elif a == d and a == g and a in ['X','O']:
@@ -107,7 +110,8 @@ def ingame():
     elif g == h and g == i and g in ['X','O']:
         return True     
     elif lst.count(' ') == 0:
-        return  True
+        velha = True
+        return True
     else:
         return False
     
@@ -150,6 +154,8 @@ while replay == 'S':
     
     fimGame = False
     
+    velha = False
+    
     while fimGame == False:
         
         if jogador == 'X':
@@ -170,6 +176,9 @@ while replay == 'S':
         
         fimGame = ingame()
         
-    print(f"Parabéns, o jogador {njogador} foi o vencedor!\n")
+    if velha:
+        print("Velha :/")
+    else:
+        print(f"Parabéns o jogador {njogador} foi o vencedor! :)")
 
     replay = rematch()
